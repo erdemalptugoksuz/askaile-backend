@@ -6,7 +6,7 @@ import cors from "cors";
 import connectToDatabase from "./db";
 import userRoutes from "./routes/user.routes";
 import relationshipRoutes from "./routes/relationship.routes";
-import dateRoutes from "./routes/date.routes";
+import meetingRoutes from "./routes/meeting.routes";
 
 const application = express();
 application.use(express.json());
@@ -21,13 +21,11 @@ application.get("/lovebombing", (request: Request, response: Response) => {
 
 application.use("/users", userRoutes);
 application.use("/relationships", relationshipRoutes);
-application.use("/dates", dateRoutes);
+application.use("/meetings", meetingRoutes);
 
 application.listen(PORT, () => {
   console.log(`Server up and running`);
 });
 
-// #TODO: Relationship silinirken date'lerin de silinmesi gerekiyor.
-// #TODO: Date'in ismini değiştir.
 // #TODO: Bütün controllerlara update işlevi ekle.
-// #TODO: Date controllerına delete işlevi ekle.
+// #TODO: Meeting controllerına delete işlevi ekle.

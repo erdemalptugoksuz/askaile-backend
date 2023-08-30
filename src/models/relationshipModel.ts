@@ -5,7 +5,9 @@ const relationshipSchema = new mongoose.Schema(
     startDate: { type: String, required: true },
     status: { type: String, required: true },
     partners: [{ type: Schema.Types.ObjectId, required: true, ref: "User" }],
-    dates: [{ type: Schema.Types.ObjectId, required: false, ref: "Date" }],
+    meetings: [
+      { type: Schema.Types.ObjectId, required: false, ref: "Meeting" },
+    ],
   },
   {
     timestamps: true,

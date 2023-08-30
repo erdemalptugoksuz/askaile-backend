@@ -1,8 +1,8 @@
 import mongoose, { Schema } from "mongoose";
 
-const dateSchema = new mongoose.Schema(
+const meetingSchema = new mongoose.Schema(
   {
-    dateTime: { type: String, required: true },
+    meetingTime: { type: String, required: true },
     place: { type: String, required: false },
     description: { type: String, required: false },
     budget: { type: Number, required: false },
@@ -18,6 +18,6 @@ const dateSchema = new mongoose.Schema(
   }
 );
 
-const Date = mongoose.model("Date", dateSchema);
+const Meeting = mongoose.model("Meeting", meetingSchema);
 
-export default Date;
+export default Meeting;

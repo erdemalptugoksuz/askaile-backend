@@ -18,9 +18,9 @@ export interface IUser {
   livingPlace: string;
 }
 
-export interface IDate {
+export interface IMeeting {
   _id: string;
-  dateTime: string;
+  meetingTime: string;
   place: string;
   description: string;
   budget: number;
