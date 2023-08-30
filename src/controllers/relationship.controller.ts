@@ -5,6 +5,7 @@ import Relationship from "../models/relationshipModel";
 import { Types } from "mongoose";
 import { IRelationship } from "../types";
 import { AuthRequest } from "../middleware";
+import Meeting from "../models/meetingModel";
 
 export const createRelationship = async (
   request: AuthRequest,
@@ -82,7 +83,9 @@ export const deleteRelationship = async (
 
     if (relationship.partners.includes(userId)) {
       const deletedRelationship = await Relationship.findByIdAndDelete(id);
+
       if (deletedRelationship) {
+        await Meeting.deleteMany({ relationship: id });
         const user = await User.findById(deletedRelationship.partners[0]);
         const partner = await User.findById(deletedRelationship.partners[1]);
         if (user && partner) {
