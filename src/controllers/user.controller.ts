@@ -58,7 +58,7 @@ export const createUser = async (request: Request, response: Response) => {
 
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    await User.create({
+    const newUser = await User.create({
       name: name,
       lastName: lastName,
       gender: gender,
@@ -67,6 +67,12 @@ export const createUser = async (request: Request, response: Response) => {
       birthDate: birthDate,
       livingPlace: livingPlace,
     });
+
+    if (!newUser) {
+      return response
+        .status(500)
+        .send("User creation failed! Please try again later...");
+    }
 
     return response.status(201).send({ message: "User created successfully!" });
   } catch (error) {
